@@ -7,7 +7,7 @@ class node
 	{
 		this.info=data;
 		this.ptr=null;
-		
+
 	}
 }
 public class Linkedlist {
@@ -32,7 +32,7 @@ public class Linkedlist {
 		for(node first=this.head;first!=null;first=first.ptr){
 		System.out.println(first.info);
 		}
-		
+
 
 }
 	public void deleteNode(int n) {
@@ -54,16 +54,44 @@ public class Linkedlist {
 		curr = curr.ptr;
 		}
 		}
-		}
+	}
+		public void delpos(int position)
+	 {
+			 // If linked list is empty
+			 if (head == null)
+					 return;
+			 node temp = head;
+
+			 // If head needs to be removed
+			 if (position == 0)
+			 {
+					 head = temp.ptr;   // Change head
+					 return;
+			 }
+
+			 // Find previous node of the node to be deleted
+			 for (int i=0; temp!=null && i<position-1; i++)
+					 temp = temp.ptr;
+
+			 // If position is more than number of ndoes
+			 if (temp == null || temp.ptr == null)
+					 return;
+
+
+			 node ptr = temp.ptr.ptr;
+
+			 temp.ptr = ptr;  // Unlink the deleted node from list
+	 }
+
 
 public static void main(String[] args){
 	Linkedlist l = new Linkedlist();
 	Scanner s = new Scanner(System.in);
-	int n,p,c;
+	int n,p,c,e;
 	int ch=1;
 	while(ch==1)
 	{
-	System.out.println("Enter your choice 1:Insert 2:Delete 3:Print");
+	System.out.println("Enter your choice 1:Insert 2:Delete a particular element 3:Print 4:Delete a particular position");
 	c=s.nextInt();
 	switch(c)
 	{
@@ -77,16 +105,21 @@ public static void main(String[] args){
 	          break;
 	case 2:   System.out.println("Enter the element to be deleted");
               int re=s.nextInt();
-              l.deleteNode(re);       
-              break;	
-              
+              l.deleteNode(re);
+              break;
+
 	case 3:   System.out.println("The elements of linked list are:");
 	          l.print();
-       
+            break;
+	case 4:   System.out.println("Enter the Position");
+	          e=s.nextInt();
+	          l.delpos(e);
+
+
 	}
 	System.out.println("Do yo want to continue Y=1 and N=0");
 	 ch=s.nextInt();
-	 
+
 	}
     s.close();
 }
