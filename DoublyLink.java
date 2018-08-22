@@ -123,8 +123,8 @@ class Doubly{
 						 int p= m.nextInt();
 						 l.inslast(p);
 						 break;
-				case 3:System.out.println("Enter the element");
-			       int q= m.nextInt();
+		        case 3:System.out.println("Enter the element");
+			                         int q= m.nextInt();
 						 System.out.println("Enter the position");
 						 int w= m.nextInt();
 						 l.inspos(q,w);
